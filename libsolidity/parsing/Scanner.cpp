@@ -769,7 +769,7 @@ Token::Value Scanner::scanNumber(char _charSeen)
 			if (m_char == '.')
 			{
 				// A '.' has to be followed by a number.
-				if (!isDecimalDigit(m_source.get(1)))
+				if (m_source.isPastEndOfInput() || !isDecimalDigit(m_source.get(1)))
 				{
 					literal.complete();
 					return Token::Number;
